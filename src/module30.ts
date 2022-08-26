@@ -41,3 +41,7 @@ const maxNum = (num1: number[], num2: number[]) => {
   return Math.max(...newArray);
 };
 console.log(maxNum([2, 3, 4], [5, 6, 7]));
+
+x = 8;
+console.log(x); //output : 8
+var x;
