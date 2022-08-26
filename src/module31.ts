@@ -39,3 +39,37 @@ const sum = num1.reduce(
   initialValue
 );
 console.log(sum); //15
+
+// Odd to Even
+const oddNumbers = [1, 3, 5, 7, 9];
+const evenNum = oddNumbers.map((num) => num + 1);
+console.log(evenNum);
+
+// Array divisible by 10
+const allNum = [33, 50, 79, 78, 90, 101, 30];
+const divisibleBy10 = allNum.filter((num) => num % 10 === 0);
+const singleNumDivisibleBy10 = allNum.find((num) => num % 10 === 0);
+console.log(divisibleBy10);
+console.log(singleNumDivisibleBy10);
+
+// Add all element
+const allNums = [1, 9, 17, 22];
+const resultNum = allNums.reduce((prev, curr) => prev + curr, 0);
+console.log(resultNum);
+
+// Sum of age
+const peoples = [
+  { name: "Meena", age: 20 },
+  { name: "Rina", age: 15 },
+  { name: "Suchorita", age: 22 },
+];
+// For loop
+let sumOfAge = 0;
+peoples.forEach((people) => {
+  sumOfAge = sumOfAge + people.age;
+});
+console.log(sumOfAge);
+
+// Reduce
+const ageSum = peoples.reduce((prev, curr) => prev + curr.age, 0);
+console.log(ageSum);
