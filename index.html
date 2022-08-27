@@ -5,6 +5,22 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Typescript API</title>
+    <style>
+      * {
+        box-sizing: border-box;
+      }
+      .user {
+        background-color: lightcoral;
+        margin: 5px;
+        padding: 2px;
+      }
+    </style>
+    <script src="js/fetch.js" defer></script>
+    <section id="main-section">
+      <button onclick="loadData()">Load Data</button>
+      <button onclick="loadUsers()">Load Users</button>
+      <div data-users-list></div>
+    </section>
   </head>
   <body></body>
 </html>
