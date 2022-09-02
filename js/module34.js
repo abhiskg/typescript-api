@@ -1,13 +1,4 @@
 "use strict";
-var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, generator) {
-    function adopt(value) { return value instanceof P ? value : new P(function (resolve) { resolve(value); }); }
-    return new (P || (P = Promise))(function (resolve, reject) {
-        function fulfilled(value) { try { step(generator.next(value)); } catch (e) { reject(e); } }
-        function rejected(value) { try { step(generator["throw"](value)); } catch (e) { reject(e); } }
-        function step(result) { result.done ? resolve(result.value) : adopt(result.value).then(fulfilled, rejected); }
-        step((generator = generator.apply(thisArg, _arguments || [])).next());
-    });
-};
 const searchField = document.querySelector("#search-field");
 const processSearch = (dataLimit) => {
     toggleSpinner(true);
@@ -24,11 +15,11 @@ const searchBtn = document.querySelector("#search-btn");
 searchBtn.addEventListener("click", () => {
     processSearch(10);
 });
-const loadPhones = (searchValue, dataLimit) => __awaiter(void 0, void 0, void 0, function* () {
+const loadPhones = async (searchValue, dataLimit) => {
     const warningElement = document.querySelector("#warning-element");
     try {
-        const res = yield fetch(`https://openapi.programming-hero.com/api/phones?search=${searchValue}`);
-        const { data } = yield res.json();
+        const res = await fetch(`https://openapi.programming-hero.com/api/phones?search=${searchValue}`);
+        const { data } = await res.json();
         if (data.length === 0) {
             toggleSpinner(false);
             warningElement.classList.remove("d-none");
@@ -42,7 +33,7 @@ const loadPhones = (searchValue, dataLimit) => __awaiter(void 0, void 0, void 0,
     catch (error) {
         console.log(error);
     }
-});
+};
 const showPhones = (phones, dataLimit) => {
     const phoneContainer = document.querySelector("[data-phone-container]");
     phoneContainer.textContent = "";
@@ -90,11 +81,11 @@ const showAllBtn = (shouldShow) => {
 const loadShowAll = () => {
     processSearch(0);
 };
-const loadDetails = (slug) => __awaiter(void 0, void 0, void 0, function* () {
-    const res = yield fetch(`https://openapi.programming-hero.com/api/phone/${slug}`);
-    const { data } = yield res.json();
+const loadDetails = async (slug) => {
+    const res = await fetch(`https://openapi.programming-hero.com/api/phone/${slug}`);
+    const { data } = await res.json();
     showDetails(data);
-});
+};
 const showDetails = (phone) => {
     console.log(phone);
     const title = document.querySelector("#phoneDetailsModalLabel");

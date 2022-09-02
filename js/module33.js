@@ -1,13 +1,4 @@
 "use strict";
-var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, generator) {
-    function adopt(value) { return value instanceof P ? value : new P(function (resolve) { resolve(value); }); }
-    return new (P || (P = Promise))(function (resolve, reject) {
-        function fulfilled(value) { try { step(generator.next(value)); } catch (e) { reject(e); } }
-        function rejected(value) { try { step(generator["throw"](value)); } catch (e) { reject(e); } }
-        function step(result) { result.done ? resolve(result.value) : adopt(result.value).then(fulfilled, rejected); }
-        step((generator = generator.apply(thisArg, _arguments || [])).next());
-    });
-};
 // Showing Kanye
 const loadKanye = () => {
     fetch("https://api.kanye.rest/")
@@ -88,11 +79,11 @@ const showMeals = (meals) => {
         mealsContainer.append(elementDiv);
     });
 };
-const loadMealDetails = (idMeal) => __awaiter(void 0, void 0, void 0, function* () {
+const loadMealDetails = async (idMeal) => {
     const url = `https://www.themealdb.com/api/json/v1/1/lookup.php?i=${idMeal}`;
     try {
-        const res = yield fetch(url);
-        const data = yield res.json();
+        const res = await fetch(url);
+        const data = await res.json();
         console.log(data.meals[0]);
     }
     catch (error) {
@@ -101,4 +92,4 @@ const loadMealDetails = (idMeal) => __awaiter(void 0, void 0, void 0, function* 
     // fetch(url)
     //   .then((res) => res.json())
     //   .then((data) => console.log(data.meals[0]));
-});
+};
